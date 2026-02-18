@@ -1,0 +1,59 @@
+.to-do-item {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+}
+
+.to-do-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+    transform: translateY(-2px);
+}
+
+.to-do-item h3 {
+    margin: 0 0 12px 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+.pass {
+    display: flex;
+    align-items: center;
+    background-color: #ffcaca;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #444;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    border-right: 3px solid #e74c3c;
+
+}
+
+p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+p::before {
+    content: "•";
+    color: #3498db;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.even-item{
+    background-color: #f9f9f9;
+}
+
+

@@ -1,0 +1,26 @@
+@for (toDo of list; track toDo.id) {
+    <div class="to-do-item" [class.even-item]="$even">
+        <h3>{{ toDo.title }}</h3>
+        <p [class.pass]="isPass(toDo)">
+            Deadline: {{ toDo.deadline | date:'dd/MM/yyyy' }}
+        </p>
+        <p>Status:
+        @switch (toDo.status) {
+            @case (0) {
+              ✅
+            }
+            @case (1) {
+              ⏳
+            }
+            @case (2) {
+              ❌
+            }
+        } </p>
+         @if ($last) {
+             <p>Last item in the list</p>
+        } 
+    </div>
+}
+@empty {
+    <p>No items in the list</p>
+}
