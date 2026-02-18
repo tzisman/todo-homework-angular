@@ -1,8 +1,23 @@
+<div class="header-section">
+    <h1>ניהול משימות <span>שלי</span></h1>
+    <p>סדר ביום עושה סדר בראש</p>
+    <div class="header-line"></div>
+</div>
 @for (toDo of list; track toDo.id) {
     <div class="to-do-item" [class.even-item]="$even">
-        <h3>{{ toDo.title }}</h3>
+        <h3>
+             @if (toDo === edited) {
+            <input type="text" [(ngModel)]="edited.title" />
+          } @else {
+            {{ toDo.title }}
+          }
+        </h3>
         <p [class.pass]="isPass(toDo)">
+              @if (toDo === edited) {
+            <input type="text" [(ngModel)]="edited.deadline" />
+          } @else {
             Deadline: {{ toDo.deadline | date:'dd/MM/yyyy' }}
+          }
         </p>
         <p>Status:
         @switch (toDo.status) {
@@ -19,8 +34,19 @@
          @if ($last) {
              <p>Last item in the list</p>
         } 
+        <button [disabled]="toDo.status == 0" (click)="updateStatus(toDo, 0)">Set to Done</button>
+        <button [disabled]="toDo.status == 1" (click)="updateStatus(toDo, 1)">Set to In Progress</button>
+        <button [disabled]="toDo.status == 2" (click)="updateStatus(toDo, 2)">Set to Not Done</button>
+        <button (click)="delete(toDo)">Delete</button>
+        <button (click)="edit(toDo)">Edit</button>
     </div>
 }
 @empty {
     <p>No items in the list</p>
 }
+<h3>add new item</h3>
+<div>
+    <input type="text" placeholder="Title" [(ngModel)]="newToDo.title" />
+    <input type="date" [(ngModel)]="newToDo.deadline" />
+    <button (click)="addNew()">Add</button>
+</div>

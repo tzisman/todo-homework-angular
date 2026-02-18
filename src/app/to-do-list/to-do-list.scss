@@ -1,59 +1,185 @@
+/* מיכל ראשי */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    direction: rtl; /* מותאם לעברית, שנה ל-ltr אם הטקסט באנגלית */
+}
+
+/* כרטיסיית משימה */
 .to-do-item {
     background: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    font-family: sans-serif;
+    border: none;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .to-do-item:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: #3498db;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* הבחנה בין פריטים זוגיים */
+.even-item {
+    background-color: #fcfcfc;
+}
+
+/* כותרת המשימה */
 .to-do-item h3 {
-    margin: 0 0 12px 0;
-    color: #2c3e50;
-    font-size: 1.4rem;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 8px;
-}
-
-.pass {
+    margin: 0 0 15px 0;
+    color: #1a1a1a;
+    font-size: 1.25rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
-    background-color: #ffcaca;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: 500;
-    color: #444;
-    margin: 10px 0;
-    font-size: 0.9rem;
-    border-right: 3px solid #e74c3c;
-
+    gap: 10px;
 }
 
-p {
-    margin: 8px 0;
-    color: #555;
+/* שדות קלט בזמן עריכה */
+input[type="text"], input[type="date"] {
+    padding: 10px;
+    border: 2px solid #edf2f7;
+    border-radius: 8px;
     font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #4a90e2;
+}
+
+/* תאריך יעד */
+.deadline-info {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 12px;
+}
+
+/* התראה על תאריך שעבר (הקלאס pass שלך) */
+.pass {
+    background-color: #fff5f5;
+    color: #c53030;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-right: 4px solid #fc8181;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+/* כפתורים */
+.actions-grid {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
 }
 
-p::before {
-    content: "•";
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    background: #edf2f7;
+    color: #4a5568;
+}
+
+button:hover:not(:disabled) {
+    background: #e2e8f0;
+    color: #2d3748;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* כפתור מחיקה ספציפי */
+button.delete-btn {
+    background: #fff5f5;
+    color: #e53e3e;
+}
+
+button.delete-btn:hover {
+    background: #feb2b2;
+}
+
+/* אזור הוספת משימה חדשה */
+.add-new-section {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 16px;
+    border: 2px dashed #cbd5e0;
+    margin-top: 40px;
+}
+
+.add-new-section h3 {
+    margin-top: 0;
+    color: #2d3748;
+}
+
+.add-new-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.add-btn {
+    background: #4a90e2;
+    color: white;
+    padding: 10px 25px;
+}
+
+.add-btn:hover {
+    background: #357abd;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 10px;
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* הדגשה למילה "שלי" */
+.header-section h1 span {
     color: #3498db;
-    font-weight: bold;
-    margin-left: 8px;
+    position: relative;
 }
 
-.even-item{
-    background-color: #f9f9f9;
+/* פס דקורטיבי מתחת לכותרת */
+.header-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    margin: 15px auto;
+    border-radius: 10px;
 }
 
+.header-section p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin: 5px 0 0 0;
+    
+    display: block; 
+}
+
+
+.header-section p::before {
+    content: none;
+}
 
